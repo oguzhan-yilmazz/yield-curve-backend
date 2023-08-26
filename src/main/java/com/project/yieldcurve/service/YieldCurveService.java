@@ -42,8 +42,8 @@ public class YieldCurveService {
         List<Double> maturities = bondcalculator.getMaturities();
         List<Double> yields = bondcalculator.getYields();
         List<LocalDate> maturityDates = bondcalculator.getMaturityDates();
-        System.out.println("maturities: "+ maturities);
-        System.out.println("yields: " + yields);
+        //System.out.println("maturities: "+ maturities);
+        //System.out.println("yields: " + yields);
         Map<String, List<Double>> result = new HashMap<>();
         result.put("maturities", maturities);
         result.put("yields", yields);

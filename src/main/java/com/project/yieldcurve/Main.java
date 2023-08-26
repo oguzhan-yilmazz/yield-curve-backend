@@ -21,7 +21,7 @@ public class Main {
 		//JsonParser readJson = new JsonParser();
 		//DataMapper bondlist = new DataMapper();
         //web: java -jar target/yieldcurve-0.0.1-SNAPSHOT.jar
-	
+	//web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/yieldcurve-0.0.1-SNAPSHOT.jar
 		String filePath = "src/main/resources/bondData.json";
 		
 		JSONObject dataJson = jsonParser.parseFromFile(filePath);
@@ -35,8 +35,8 @@ public class Main {
         List<Double> maturities = bondcalculator.getMaturities();
         List<Double> yields = bondcalculator.getYields();
         List<LocalDate> maturityDates = bondcalculator.getMaturityDates();
-        System.out.println("maturities: "+ maturities);
-        System.out.println("yields: " + yields);
-        YieldCurveGraph.plotYieldCurve(maturities, yields, maturityDates);					
+        //System.out.println("maturities: "+ maturities);
+        //System.out.println("yields: " + yields);
+  				
 	    }				
 }
