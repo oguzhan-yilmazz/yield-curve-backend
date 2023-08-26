@@ -34,11 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
         // Diğer konfigürasyonlar
     }
-
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // React uygulamanızın URL'ini buraya ekleyin
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://yieldcurve.netlify.app")); // React uygulamanızın URL'ini buraya ekleyin
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "HEAD"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
