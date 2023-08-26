@@ -1,0 +1,202 @@
+{
+  "results": [
+    {
+      "columns": [
+        {
+          "name": "BUSINESS_DATE",
+          "type": "DATE"
+        },
+        {
+          "name": "SERIES_ID",
+          "type": "VARCHAR2"
+        },
+        {
+          "name": "SAVED_PRICE",
+          "type": "NUMBER"
+        },
+        {
+          "name": "START_DATE",
+          "type": "DATE"
+        },
+        {
+          "name": "END_DATE",
+          "type": "DATE"
+        },
+        {
+          "name": "COUPONRATE",
+          "type": "NUMBER"
+        }
+      ],
+      "items": [
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT200923T18.GF",
+          "saved_price": 101662,
+          "start_date": "22-MAY-23",
+          "end_date": "20-SEP-23",
+          "couponrate": 8.59
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT270923T11.GF",
+          "saved_price": 97570,
+          "start_date": "20-SEP-23",
+          "end_date": "27-SEP-23",
+          "couponrate": 4.40
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT111023T16.GF",
+          "saved_price": 97131,
+          "start_date": "27-SEP-23",
+          "end_date": "11-OCT-23",
+          "couponrate": 3.7
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT181023T19.GF",
+          "saved_price": 103121,
+          "start_date": "11-OCT-23",
+          "end_date": "18-OCT-23",
+          "couponrate": 10.04
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT131223T12.GF",
+          "saved_price": 97131,
+          "start_date": "18-OCT-23",
+          "end_date": "13-DEC-23",
+          "couponrate": 4.5
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT200324T13.GF",
+          "saved_price": 96144,
+          "start_date": "13-DEC-23",
+          "end_date": "20-MAR-24",
+          "couponrate": 5.2
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT170424T17.GF",
+          "saved_price": 106566,
+          "start_date": "20-MAR-24",
+          "end_date": "17-APR-24",
+          "couponrate": 10.45
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT240724T15.GF",
+          "saved_price": 95382,
+          "start_date": "17-APR-24",
+          "end_date": "24-JUL-24",
+          "couponrate": 4.5
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT041224T12.GF",
+          "saved_price": 90166,
+          "start_date": "24-JUL-24",
+          "end_date": "04-DEC-24",
+          "couponrate": 4.65
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT120325T12.GF",
+          "saved_price": 88423,
+          "start_date": "04-DEC-24",
+          "end_date": "12-MAR-25",
+          "couponrate": 4.0
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT011025T16.GF",
+          "saved_price": 98110,
+          "start_date": "12-MAR-25",
+          "end_date": "01-OCT-25",
+          "couponrate": 6.3
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT110226T13.GF",
+          "saved_price": 90758,
+          "start_date": "01-OCT-25",
+          "end_date": "11-FEB-26",
+          "couponrate": 5.3
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT020926T17.GF",
+          "saved_price": 108412,
+          "start_date": "11-FEB-26",
+          "end_date": "02-SEP-26",
+          "couponrate": 8.45
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT240227T17.GF",
+          "saved_price": 91365,
+          "start_date": "02-SEP-26",
+          "end_date": "24-FEB-27",
+          "couponrate": 5.5
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT090627T12.GF",
+          "saved_price": 126262,
+          "start_date": "24-FEB-27",
+          "end_date": "09-JUN-27",
+          "couponrate": 10.1
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT110827T16.GF",
+          "saved_price": 85012,
+          "start_date": "09-JUN-27",
+          "end_date": "11-AUG-27",
+          "couponrate": 5.25
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT150927T11.GF",
+          "saved_price": 88711,
+          "start_date": "11-AUG-27",
+          "end_date": "15-SEP-27",
+          "couponrate": 5.14
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT080328T15.GF",
+          "saved_price": 93677,
+          "start_date": "15-SEP-27",
+          "end_date": "08-MAR-28",
+          "couponrate": 6.2
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT131130T14.GF",
+          "saved_price": 93540,
+          "start_date": "08-MAR-28",
+          "end_date": "13-NOV-30",
+          "couponrate": 5.85
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT280432T14.GF",
+          "saved_price": 136616,
+          "start_date": "13-NOV-30",
+          "end_date": "28-APR-32",
+          "couponrate": 10.75
+        },
+        {
+          "business_date": "22-MAY-23",
+          "series_id": "TRT131032T13.GF",
+          "saved_price": 83964,
+          "start_date": "28-APR-32",
+          "end_date": "13-OCT-32",
+          "couponrate": 5.2
+        }
+      ]
+    }
+  ]
+}
