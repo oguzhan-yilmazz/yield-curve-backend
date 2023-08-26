@@ -19,7 +19,7 @@ public class YieldCurveController {
 
     @Autowired
     private YieldCurveService yieldCurveService;
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {"http://localhost:3000", "https://yieldcurve.netlify.app"})
     @GetMapping("/calculate")
     public ResponseEntity<Map<String, List<Double>>> calculateYieldCurve() throws Exception  {
         Map<String, List<Double>> result = yieldCurveService.calculateYieldCurve();
