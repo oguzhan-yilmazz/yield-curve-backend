@@ -20,7 +20,7 @@ public class Main {
 		
 		//JsonParser readJson = new JsonParser();
 		//DataMapper bondlist = new DataMapper();
-		
+        //web: java -jar target/yieldcurve-0.0.1-SNAPSHOT.jar
 	
 		String filePath = "src/main/resources/bondData.json";
 		

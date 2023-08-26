@@ -21,9 +21,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .cors().and()  // CORS ayarlarını etkinleştir
+            .cors().and()
             .authorizeRequests()
-                .antMatchers("/", "/home", "/api/yieldcurve/calculate").permitAll()
+                .antMatchers("/api/yieldcurve/calculate").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
