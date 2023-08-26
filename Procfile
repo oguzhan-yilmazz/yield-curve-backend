@@ -1,0 +1,1 @@
+web: java -jar target/yieldcurve-0.0.1-SNAPSHOT.jar
