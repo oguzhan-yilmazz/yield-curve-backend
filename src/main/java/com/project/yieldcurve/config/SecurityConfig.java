@@ -18,24 +18,24 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .cors().and()
-            .authorizeRequests()
-                .antMatchers("/", "/login", "/api/yieldcurve/calculate").permitAll()  // Kök URL'yi ve login sayfasını da ekledim
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login") // Custom login page
-                .defaultSuccessUrl("/", true) // Başarılı login sonrası yönlenecek URL
-                .permitAll()
-                .and()
-            .logout()
-                .logoutUrl("/logout") // Custom logout URL
-                .logoutSuccessUrl("/") // Logout sonrası yönlenecek URL
-                .permitAll();
-    }
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+	    http
+	        .cors().and()
+	        .authorizeRequests()
+	            .antMatchers("/", "/login", "/api/yieldcurve/calculate", "/static/**", "/public/**", "/resources/**").permitAll()
+	            .anyRequest().authenticated()
+	            .and()
+	        .formLogin()
+	            .loginPage("/login")
+	            .defaultSuccessUrl("/", true)
+	            .permitAll()
+	            .and()
+	        .logout()
+	            .logoutUrl("/logout")
+	            .logoutSuccessUrl("/")
+	            .permitAll();
+	}
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
