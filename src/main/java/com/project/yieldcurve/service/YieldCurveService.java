@@ -33,7 +33,8 @@ public class YieldCurveService {
 		
 		JSONObject dataJson = jsonParser.parseFromFile(filePath);
 		
-		
+        //web: java -jar target/yieldcurve-0.0.1-SNAPSHOT.jar
+	//web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/yieldcurve-0.0.1-SNAPSHOT.jar
 		List<BondInstrument> bondlists = dataMapper.mapToBondInstrumentList(dataJson);
 		//System.out.println(bondlists);
 		YieldCurveCalculator yieldCurveCalculator = new YieldCurveCalculator();
