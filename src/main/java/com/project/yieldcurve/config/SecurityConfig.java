@@ -23,17 +23,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .cors().and()
             .authorizeRequests()
-                .antMatchers("/api/yieldcurve/calculate").permitAll()
+                .antMatchers("/", "/login", "/api/yieldcurve/calculate").permitAll()  // Kök URL'yi ve login sayfasını da ekledim
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login")
+                .loginPage("/login") // Custom login page
+                .defaultSuccessUrl("/", true) // Başarılı login sonrası yönlenecek URL
                 .permitAll()
                 .and()
             .logout()
+                .logoutUrl("/logout") // Custom logout URL
+                .logoutSuccessUrl("/") // Logout sonrası yönlenecek URL
                 .permitAll();
-        // Diğer konfigürasyonlar
     }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
