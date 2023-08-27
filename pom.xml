@@ -71,6 +71,12 @@
     		<artifactId>jcommon</artifactId>
     		<version>1.0.23</version>
 		</dependency>
+		    <!-- Thymeleaf template engine -->
+    	<dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-thymeleaf</artifactId>
+    	</dependency>
+
 	</dependencies>
 
 	<build>
