@@ -11,8 +11,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.project.yieldcurve.YieldCurveCalculator;
 
+
+@Service
 public class BondCalculator {
 	final int DAYS_PER_YEAR = 365; // Bir yıldaki gün sayısı
 	private final YieldCurveCalculator yieldCurveCalculator;
@@ -23,6 +28,7 @@ public class BondCalculator {
 	
 	
 	// dependency injection
+	@Autowired 
 	public BondCalculator(YieldCurveCalculator yieldCurveCalculator){
 		this.yieldCurveCalculator = yieldCurveCalculator;
 	}

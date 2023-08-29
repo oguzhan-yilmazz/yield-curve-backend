@@ -13,8 +13,10 @@ import java.util.Locale;
 import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.analysis.solvers.BrentSolver;
 import org.apache.commons.math3.analysis.solvers.UnivariateSolver;
+import org.springframework.stereotype.Service;
 
 //
+@Service
 public class YieldCurveCalculator {
 	
 

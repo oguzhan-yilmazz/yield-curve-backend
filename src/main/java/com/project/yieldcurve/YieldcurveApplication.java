@@ -17,14 +17,17 @@ public class YieldcurveApplication implements CommandLineRunner {
     @Autowired
     private YieldCurveService yieldCurveService;
 
+    public YieldcurveApplication(YieldCurveService yieldCurveService) {
+        this.yieldCurveService = yieldCurveService;
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(YieldcurveApplication.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-        Map<String, List<Double>> result = yieldCurveService.calculateYieldCurve();
-        // Sonuçları burada işleyebilirsiniz
-        System.out.println("son sonuclar burda:  "+result);
+        yieldCurveService.calculateYieldCurve();
+
     }
 }

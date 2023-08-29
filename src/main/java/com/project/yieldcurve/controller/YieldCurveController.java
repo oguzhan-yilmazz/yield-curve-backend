@@ -1,8 +1,10 @@
 package com.project.yieldcurve.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +19,27 @@ import com.project.yieldcurve.service.YieldCurveService;
 @RequestMapping("/api/yieldcurve")
 public class YieldCurveController {
 
+	private static final Logger logger = LoggerFactory.getLogger(YieldCurveController.class);
+	
+	
     @Autowired
     private YieldCurveService yieldCurveService;
+    
+    // CrossOrigin ile sadece belirli domainlerden gelen isteklere izin veriyoruz, bu bir güvenlik önlemi.
     @CrossOrigin(origins = {"http://localhost:3000", "https://yieldcurve.netlify.app"})
     @GetMapping("/calculate")
     public ResponseEntity<Map<String, List<Double>>> calculateYieldCurve() throws Exception  {
-        Map<String, List<Double>> result = yieldCurveService.calculateYieldCurve();
+        Map<String, List<Double>> result = yieldCurveService.getYieldCurveData();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+    
+    
+    @CrossOrigin(origins = {"http://localhost:3000", "https://yieldcurve.netlify.app"})
+    @GetMapping("/calculateMaturity")
+    public ResponseEntity<Map<String, List<LocalDate>>>  calculateYieldCurveMaturity() throws Exception {
+    	Map<String, List<LocalDate>> result = yieldCurveService.getMaturityDates();
+    	return new ResponseEntity<>(result, HttpStatus.OK);
+    	
+    }
+ 
 }

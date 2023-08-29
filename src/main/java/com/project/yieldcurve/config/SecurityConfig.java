@@ -1,6 +1,9 @@
 package com.project.yieldcurve.config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    http
 	        .cors().and()
 	        .authorizeRequests()
-	            .antMatchers("/", "/login", "/api/yieldcurve/calculate", "/static/**", "/public/**", "/resources/**").permitAll()
+	            .antMatchers("/", "/login", "/api/yieldcurve/calculate", "/static/**", "/public/**", "/resources/**", "/templates/**").permitAll()
 	            .anyRequest().authenticated()
 	            .and()
 	        .formLogin()
@@ -35,7 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	            .logoutUrl("/logout")
 	            .logoutSuccessUrl("/")
 	            .permitAll();
+	            
 	}
+	
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
+    }
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

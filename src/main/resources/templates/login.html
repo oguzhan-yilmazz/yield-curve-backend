@@ -5,17 +5,17 @@
 </head>
 <body>
 
-<h2>Login Page</h2>
+<h2 style="text-align: center;">Login Page</h2>
 
-<form th:action="@{/login}" method="post">
-    <div class="container">
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
+<form th:action="@{/login}" method="post" style="width: 300px; margin: auto;">
+    <div class="container" style="display: flex; flex-direction: column;">
+        <label for="username" style="font-weight: bold; margin-bottom: 8px;">Username</label>
+        <input type="text" placeholder="Enter Username" name="username" required style="margin-bottom: 16px; padding: 8px;">
 
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
+        <label for="password" style="font-weight: bold; margin-bottom: 8px;">Password</label>
+        <input type="password" placeholder="Enter Password" name="password" required style="margin-bottom: 16px; padding: 8px;">
 
-        <button type="submit">Login</button>
+        <button type="submit" style="background-color: blue; color: white; padding: 12px 20px;">Login</button>
     </div>
 </form>
 

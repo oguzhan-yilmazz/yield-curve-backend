@@ -3,7 +3,9 @@ package com.project.yieldcurve;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import lombok.Data;
 
+@Data
 public class BondInstrument {
 	    private LocalDate businessDate;  // işlem tarihi
 	    private String seriesId;   // bono ve tahvilin seri id'si.
