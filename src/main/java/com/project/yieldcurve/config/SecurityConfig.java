@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        .cors().and()
 	        
 	        .authorizeRequests()
-	            .antMatchers("/", "/login", "/api/yieldcurve/calculate", "/static/**", "/public/**", "/resources/**", "/templates/**").permitAll()
+	            .antMatchers("/", "/login", "/api/yieldcurve/*", "/static/**", "/public/**", "/resources/**", "/templates/**").permitAll()
 	            .anyRequest().authenticated()
 	            .and()
 	        .formLogin()
@@ -47,17 +47,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
     }
-
+    
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://yieldcurve.netlify.app" ,"http://yieldcurve.netlify.app" )); // React uygulamanızın URL'ini buraya ekleyin
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "HEAD"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "HEAD" ,"OPTIONS"));
         configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+    
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
