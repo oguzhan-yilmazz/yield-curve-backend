@@ -23,8 +23,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable(); 
 	    http
 	        .cors().and()
+	        
 	        .authorizeRequests()
 	            .antMatchers("/", "/login", "/api/yieldcurve/calculate", "/static/**", "/public/**", "/resources/**", "/templates/**").permitAll()
 	            .anyRequest().authenticated()
@@ -51,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://yieldcurve.netlify.app")); // React uygulamanızın URL'ini buraya ekleyin
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "HEAD"));
+        configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

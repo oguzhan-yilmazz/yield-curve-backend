@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 @Component  
 public class JsonParser {
-
+//
      // Belirtilen dosya yolu üzerinden JSON içeriğini okuyarak JSONObject olarak döndürür.
  
     public JSONObject parseFromFile(String filePath) throws Exception {
