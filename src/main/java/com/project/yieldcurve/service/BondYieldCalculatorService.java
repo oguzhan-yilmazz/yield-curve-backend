@@ -1,13 +1,8 @@
-package com.project.yieldcurve;
-
-//noktadan sonra 4 basamak almak için
+package com.project.yieldcurve.service;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import org.apache.commons.math3.analysis.UnivariateFunction;
@@ -15,11 +10,19 @@ import org.apache.commons.math3.analysis.solvers.BrentSolver;
 import org.apache.commons.math3.analysis.solvers.UnivariateSolver;
 import org.springframework.stereotype.Service;
 
-//
-@Service
-public class YieldCurveCalculator {
-	
+import com.project.yieldcurve.BondInstrument;
 
+
+@Service
+public class BondYieldCalculatorService{
+	
+	private final CashFlowService cashFlowService;
+	
+	public BondYieldCalculatorService(CashFlowService cashFlowService) {
+		this.cashFlowService= cashFlowService;
+		
+	}
+	
 
 	public double calculateYieldToMaturity(double maturity ,BondInstrument bond) {
 		double ytm;
@@ -41,22 +44,13 @@ public class YieldCurveCalculator {
 		return ytm * 100; // Yüzde olarak dönüş
 	}
 	
-
-
 	public  double calculateYTMForCouponBond(double maturity , BondInstrument bond) {
-
-		
 		double Price = bond.getSavedPrice();
 		double CouponPayment = bond.getCouponPayment(); 
 		double FaceValue = bond.getNominalValue();
-		
-		
-
-		double numberOfCouponPayments = calculateDatesOfCouponPayments(bond).size();
-		
+	
+		double numberOfCouponPayments = cashFlowService.calculateDatesOfCouponPayments(bond).size();		
 		int frequency;
-
-
 		if (maturity < 0.5) {
 			frequency = 1; // 1 yıldan az vadeli tahviller için yıllık kupon ödeme sayısı 1
 		} else {
@@ -88,23 +82,7 @@ public class YieldCurveCalculator {
 		return ytm;
 	}
 	
-	public List<LocalDate> calculateDatesOfCouponPayments(BondInstrument bond) {
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		LocalDate endDate = bond.getEndDate();
-		LocalDate businessDate = bond.getBusinessDate();
-
-		// 6 aylık periyotlarla geriye giderek kupon ödemelerini saklama
-		List<LocalDate> couponDates = new ArrayList<LocalDate>();
-		LocalDate tempDate = endDate;
-		while (tempDate.isAfter(businessDate)) {
-			couponDates.add(tempDate);
-			tempDate = tempDate.minusMonths(6);
-		}
-		
-		return couponDates;
-		
-	}
+	
 
 	public double formatToDecimalPlaces(double number, int decimalPlaces) {
 		StringBuilder pattern = new StringBuilder("#.");
@@ -113,8 +91,7 @@ public class YieldCurveCalculator {
 		}
 		DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
 		symbols.setDecimalSeparator('.'); // Ondalık ayırıcı olarak nokta kullan
-		DecimalFormat df = new DecimalFormat(pattern.toString(), symbols); // "decimalPlaces" istenen ondalık basamak
-																			// sayisi
+		DecimalFormat df = new DecimalFormat(pattern.toString(), symbols); // "decimalPlaces" istenen ondalık basamak																	// sayisi
 		return Double.parseDouble(df.format(number));
 	}
 
@@ -127,11 +104,9 @@ public class YieldCurveCalculator {
 		// Doğrusal interpolasyon kullanarak hedef tarihe karşılık gelen yield değerini
 		// hesapla
 		double interpolatedYield = yield1 + (yield2 - yield1) * daysToTarget / daysBetweenDates;
-
 		return interpolatedYield;
 	}
 
-	
 	/*
 	public static void main(String[] args) {
 		double Price = 101208; // Tahvilin şimdiki piyasa fiyatı.

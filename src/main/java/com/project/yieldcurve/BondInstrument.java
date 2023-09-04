@@ -43,6 +43,8 @@ public class BondInstrument {
 	        this.couponPayment = couponRate * nominalValue *2;  // bize verilen couponrate ler 6 aylık olduğu için onu 2 ile çarparak yıl olarak hesaba katarız.
 	    }
 	    
+	    
+	    
  
 	    public LocalDate getBusinessDate() {
 			return businessDate;

@@ -19,8 +19,24 @@ public class DataMapper {
      //JSONObject içeriğini BondInstrument listesi olarak döndürür.
   
      
-    public List<BondInstrument> mapToBondInstrumentList(JSONObject jsonObject) {
-        JSONArray itemsArray = jsonObject.getJSONArray("results").getJSONObject(0).getJSONArray("items");
+    public List<BondInstrument> mapToBondInstrumentList(JSONObject jsonObject) throws Exception{
+    	
+        if (jsonObject == null) {
+            throw new Exception("Input JSONObject is null.");
+        }
+        JSONArray itemsArray = null; // Dışarıda tanımlandı.
+        
+        if(jsonObject.has("fileContent")) {
+        	System.out.println("buraya girdi");
+        	String fileContentString = jsonObject.getString("fileContent");
+        	JSONObject innerJsonObject = new JSONObject(fileContentString);
+        	itemsArray = innerJsonObject.getJSONArray("results").getJSONObject(0).getJSONArray("items");
+        	System.out.println("items: " + itemsArray);
+        }else {
+        	System.out.println("buraya girdi kesin");
+        	itemsArray = jsonObject.getJSONArray("results").getJSONObject(0).getJSONArray("items");
+        }
+        System.out.println("buraya girdi kesin mi?");
         List<BondInstrument> bondInstrumentList = new ArrayList<>();
 
         DateTimeFormatter dTF = 
@@ -28,10 +44,12 @@ public class DataMapper {
                                           .appendPattern("dd-MMM-yy")
                                           .toFormatter(Locale.ENGLISH);
 
+        System.out.println("length: "+itemsArray.length());
         for (int i = 0; i < itemsArray.length(); i++) {
             JSONObject item = itemsArray.getJSONObject(i);
 
             LocalDate businessDate = LocalDate.parse(item.getString("business_date") , dTF);
+            
             LocalDate startDate = LocalDate.parse(item.getString("start_date") , dTF);
             LocalDate endDate = LocalDate.parse(item.getString("end_date"), dTF);
 
@@ -44,6 +62,7 @@ public class DataMapper {
                 item.getDouble("couponrate")
             ));
         }
+        System.out.println("liste :"+bondInstrumentList );
 
         return bondInstrumentList;
     }
