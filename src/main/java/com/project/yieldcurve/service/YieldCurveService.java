@@ -21,6 +21,8 @@ public class YieldCurveService {
 	
 	Map<String, List<Double>> yieldCurveData = new HashMap<>();
 	Map<String, List<LocalDate>> maturityDate = new HashMap<>();
+	Map<String,LocalDate> businessDate = new HashMap<>();
+	
 
 	private JsonParser jsonParser;
 	private DataMapper dataMapper;
@@ -82,12 +84,18 @@ public class YieldCurveService {
         List<Double> yieldss = yieldCurveDataMapService.getYields();
       
         List<LocalDate> maturityDatess = yieldCurveDataMapService.getMaturityDates();
+        
+        LocalDate businessDatee =  bondLists.get(0).getBusinessDate();
+        
+   
    
         yieldCurveData.put("maturities", maturitiess);
      
         yieldCurveData.put("yields", yieldss);
        
         maturityDate.put("maturityDates", maturityDatess);
+        
+        businessDate.put("businessDate", businessDatee);
 
  
     }
@@ -100,6 +108,10 @@ public class YieldCurveService {
 
 	public Map<String, List<Double>> getYieldCurveData(){
 		return yieldCurveData;
+	}
+	
+	public Map<String, LocalDate> getBusinessDate(){
+		return businessDate;
 	}
 
 }

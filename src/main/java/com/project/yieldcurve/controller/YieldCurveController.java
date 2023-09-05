@@ -35,9 +35,19 @@ public class YieldCurveController {
     @GetMapping("/calculateMaturity")
     public ResponseEntity<Map<String, List<LocalDate>>>  calculateYieldCurveMaturity() throws Exception {
     	Map<String, List<LocalDate>> result = yieldCurveService.getMaturityDates();
-    	return new ResponseEntity<>(result, HttpStatus.OK);
-    	
+    	return new ResponseEntity<>(result, HttpStatus.OK);    	
     }
+    
+    
+    @CrossOrigin(origins = {"http://localhost:3000", "https://yieldcurve.netlify.app"})
+    @GetMapping("/businessDate")
+    public ResponseEntity<Map<String, LocalDate>>  calculateBusinessDate() throws Exception {
+    	Map<String, LocalDate> result = yieldCurveService.getBusinessDate();
+    	return new ResponseEntity<>(result, HttpStatus.OK);    	
+    }
+    
+    
+    
     @CrossOrigin(origins = {"http://localhost:3000", "https://yieldcurve.netlify.app"})
     @PostMapping("/uploadFile")
     public ResponseEntity<String> uploadFile(@RequestBody String fileContent) {
